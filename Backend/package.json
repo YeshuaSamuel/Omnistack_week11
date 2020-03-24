@@ -1,0 +1,25 @@
+{
+  "name": "omnistack_week",
+  "version": "1.0.0",
+  "description": "Omnistack Week project",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YeshuaSamuel/Omnistack_week.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YeshuaSamuel/Omnistack_week/issues"
+  },
+  "homepage": "https://github.com/YeshuaSamuel/Omnistack_week#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.20.13",
+    "sqlite3": "^4.1.1"
+  }
+}
