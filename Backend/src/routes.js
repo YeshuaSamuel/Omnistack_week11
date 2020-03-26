@@ -1,38 +1,28 @@
+const express = require('express'); //importar o express
 
-const express = require('express');
+const OngController = require('./controller/OngController') // Importar o Controlador das Ongs
 
-//
-const crypto = require('crypto');
+const IncidentController = require('./controller/IncidentController') // Importar o Controlador das Ongs
 
-//
-const connection = require('./database/connection');
+const ProfileController = require('./controller/ProfileController')
 
-//
-const routes = express.Router();
+const SessionController = require('./controller/SessionController')
+
+const routes = express.Router(); // desacoplar as rotas do express para a var routes
 
 
-routes.get('/ongs', (req, res) =>{
-    const ongs =  connection('ongs').select('*')
 
-    return res.json(ongs)
-})
+routes.get('/ongs', OngController.index);
 
-routes.post('/ongs', (req, res)=> {
-    const { name, email, whatsapp, city, uf } = req.body;
+routes.post('/ongs', OngController.create );
 
-    const id = crypto.randomBytes(4).toString('HEX') 
+routes.post('/sessions', SessionController.create)
 
-    connection('ongs').insert({
-        id,
-        name,
-        email,
-        whatsapp,
-        city,
-        uf,
-    })
+routes.get('/profile', ProfileController.index);
 
-    return res.json({ id });
+routes.get('/incidents', IncidentController.index);
+routes.post('/incidents', IncidentController.create);
+routes.delete('/incidents/:id', IncidentController.delete)
 
-});
 
-module.exports = routes;
+module.exports = routes; //Exportar as rotas

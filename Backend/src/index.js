@@ -1,11 +1,16 @@
-const express = require('express');
+const express = require('express'); // importar o express
 
-const routes = require('./routes')
+const cors = require("cors");
+
+const routes = require('./routes') //importar as rotas
 
 const app = express();
 
-app.use(express.json());
+app.use(cors());
 
-app.use(routes)
+app.use(express.json()); // Reconhecer por formato json
 
-app.listen(3333)
+app.use(routes); // usar as rotas
+
+app.listen(3333); // ouvir a porta do servidor
+
